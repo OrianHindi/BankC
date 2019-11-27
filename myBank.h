@@ -1,7 +1,6 @@
 #ifndef _MYBANK_H_
 #define _MYBANK_H_
 
-
 #define RAWS 2
 #define COL 50
 
