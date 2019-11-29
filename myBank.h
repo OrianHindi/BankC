@@ -4,7 +4,7 @@
 #define RAWS 2
 #define COL 50
 
-
+extern double Bank[RAWS][COL];
 
 void open(double);
 void balance(int);

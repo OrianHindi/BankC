@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "myBank.h"
 
-static double Bank[RAWS][COL]={0};
+double Bank[RAWS][COL]={0};
 
 void open(double amount){
     amount=amount*100;
