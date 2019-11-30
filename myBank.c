@@ -4,9 +4,7 @@
 double Bank[RAWS][COL]={0};
 
 void open(double amount){
-    amount=amount*100;
-    amount=(int)amount;
-    amount=amount/100;
+    amount= changeNumber(amount);
     int runner;
     for(runner=0;runner<50;runner++){
         if(Bank[1][runner]==0){
@@ -28,9 +26,7 @@ void balance(int account){
     return;
 }
 void deposit(int account,double amount){
-    amount=amount*100;
-    amount=(int)amount;
-    amount=amount/100;
+    amount= changeNumber(amount);
     if(Bank[1][account-901]==1){
         Bank[0][account-901]+=amount;
         printf("Your new balance is: %lf \n",Bank[0][account-901]);
@@ -39,9 +35,7 @@ void deposit(int account,double amount){
     
 }
 void withdrawal(int account,double amount){
-    amount=amount*100;
-    amount=(int)amount;
-    amount=amount/100;
+    amount= changeNumber(amount);
     if(Bank[1][account-901] == 1){
         if(Bank[0][account-901] >=amount){
             Bank[0][account-901]-=amount;
@@ -67,7 +61,8 @@ void interest(double percent){
     int runner;
     for(runner=0;runner<50;runner++){
         if(Bank[1][runner]==1){
-            Bank[0][runner]+=(percent*Bank[0][runner])/100.0;
+            double inter = changeNumber((percent*Bank[0][runner])/100.0);
+            Bank[0][runner]+=inter;
         }
     }
 
@@ -87,4 +82,10 @@ void deleteAll(){
         Bank[0][runner]=0;
     }    
     printf("All the accounts have been closed.");
+}
+double changeNumber(double x){
+    x=x*100;
+    x=(int)x;
+    x=x/100;
+    return x;
 }
