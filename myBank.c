@@ -3,7 +3,7 @@
 
 double Bank[RAWS][COL]={0};
 
-void open(double amount){
+void open(double amount){  
     amount= changeNumber(amount);
     int runner;
     for(runner=0;runner<50;runner++){
@@ -83,7 +83,11 @@ void deleteAll(){
     }    
     printf("All the accounts have been closed.");
 }
-double changeNumber(double x){
+
+/**
+ * function get double x and return x with only 2 digits after the dot.
+ * */
+double changeNumber(double x){  
     x=x*100;
     x=(int)x;
     x=x/100;
