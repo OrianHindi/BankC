@@ -3,6 +3,16 @@
 
 double Bank[RAWS][COL]={0};
 
+/**
+ * function get double x and return x with only 2 digits after the dot.
+ * */
+double changeNumber(double x){  
+    x=x*100;
+    x=(int)x;
+    x=x/100;
+    return x;
+}
+
 void open(double amount){  
     amount= changeNumber(amount);
     int runner;
@@ -19,7 +29,7 @@ void open(double amount){
 }
 void balance(int account){
     if(Bank[1][account-901] == 1){
-        printf("Your balance is:%lf \n",Bank[0][account-901]);
+        printf("Your balance is:%.2lf \n",Bank[0][account-901]);
         return;
     }
     printf("This account number is closed. \n");
@@ -29,7 +39,7 @@ void deposit(int account,double amount){
     amount= changeNumber(amount);
     if(Bank[1][account-901]==1){
         Bank[0][account-901]+=amount;
-        printf("Your new balance is: %lf \n",Bank[0][account-901]);
+        printf("Your new balance is: %.2lf \n",Bank[0][account-901]);
     }
     else printf("the account number is closed. \n");
     
@@ -39,7 +49,7 @@ void withdrawal(int account,double amount){
     if(Bank[1][account-901] == 1){
         if(Bank[0][account-901] >=amount){
             Bank[0][account-901]-=amount;
-            printf("Your new balance is: %lf \n",Bank[0][account-901]);
+            printf("Your new balance is: %.2lf \n",Bank[0][account-901]);
         }
         else {
             printf("You dont have enugh money. \n");
@@ -71,7 +81,7 @@ void print(){
     int runner;
     for(runner=0;runner<50;runner++){
         if(Bank[1][runner]==1){
-            printf(" number account is: %d   Your balanca is:%lf \n",runner+901,Bank[0][runner]);
+            printf(" number account is: %d   Your balanca is:%.2lf \n",runner+901,Bank[0][runner]);
         }
     }
 }
@@ -84,12 +94,3 @@ void deleteAll(){
     printf("All the accounts have been closed.");
 }
 
-/**
- * function get double x and return x with only 2 digits after the dot.
- * */
-double changeNumber(double x){  
-    x=x*100;
-    x=(int)x;
-    x=x/100;
-    return x;
-}

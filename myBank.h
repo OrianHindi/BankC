@@ -14,6 +14,6 @@ void close(int);
 void interest(double);
 void print();
 void deleteAll();
-double changeNumber(double);
+
 
 #endif
